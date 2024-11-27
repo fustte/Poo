@@ -1,7 +1,7 @@
 class Orquesta:
 
-
-
+    def __init__(self):
+        self.componentes = []  # lista de intrumentos
 class Intrumento:
     pass
 
