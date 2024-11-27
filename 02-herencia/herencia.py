@@ -3,6 +3,8 @@ class Animal:
     def __init__(self, nombre):
         self.nombre = nombre
 
+    def escuchar(self):
+        return f'{self.nombre} suena así : {self.sonido}'
 
 class Mamifero(Animal):
     
@@ -20,3 +22,5 @@ class Humano(Mamifero):
     def__init__(self, nombre):
     super().__init__(nombre, 2)
     self.apellido = ''
+    self.sonido = 'habla'
+
