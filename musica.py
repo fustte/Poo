@@ -2,6 +2,13 @@ class Orquesta:
 
     def __init__(self):
         self.componentes = []  # lista de intrumentos
+
+    def agregarInstrumento(self, instrumento):
+        if not isinstance(instrumento, Instrumento):
+            raise TypeError(f'{instrumento} no es un instrumento')
+        
+
+
 class Intrumento:
     pass
 
