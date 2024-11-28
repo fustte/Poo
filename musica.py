@@ -7,7 +7,7 @@ class Orquesta:
     def agregarInstrumento(self, instrumento):
         if not isinstance(instrumento, Instrumento):
             raise TypeError(f'{instrumento} no es un instrumento')
-        self.componentes.append(intrumento)
+        self.componentes.append(instrumento)
 
     def listarInstrumentos(self):
         for instrumento in self.componentes:
@@ -55,10 +55,17 @@ class Golpeada(Cuerda):
 
 
 if __name__ == '__main__':
+    
     orquesta = Orquesta()
+    
     piano = Golpeada('primer piano')
     violin = Frotada('violin 1')
     vn = Frotada('violin 2')
     timbal = Percusion('timbal principal')
+
+    orquesta.agregarInstrumento(piano)
+    orquesta.agregarInstrumento(violin)
+    orquesta.componentes.append(vn)
+    orquesta.componentes.append(timbal)
 
     orquesta.listarInstrumentos()
