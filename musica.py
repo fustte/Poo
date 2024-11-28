@@ -6,11 +6,26 @@ class Orquesta:
     def agregarInstrumento(self, instrumento):
         if not isinstance(instrumento, Instrumento):
             raise TypeError(f'{instrumento} no es un instrumento')
-        
+        self.componentes.append(intrumento)
 
+    def listarInstrumentos(self):
+        for instrumento in self.componentes:
+            print(instrumento)
 
-class Intrumento:
-    pass
+class Instrumento:
+
+    def __init__(self, nombre):
+        self.nombre = nombre
+        self.sonido = None
+
+    def sonar(self):
+        if self.sonido:
+            print('self.sonido') 
+        else:
+            print('silencio')
+
+    def __str__(self):
+        return self.nombre
 
 
 class Vientos(Instrumento):
@@ -21,7 +36,7 @@ class Percusion(Instrumento):
     pass
 
 
-class Cuerda(Intrumento):
+class Cuerda(Instrumento):
     pass
 
 
@@ -35,3 +50,14 @@ class Frotada(Cuerda):
 
 class Golpeada(Cuerda):
     pass
+
+
+
+if __name__ == '__main__':
+    orquesta = Orquesta()
+    piano = Golpeada('primer piano')
+    violin = Frotada('violin 1')
+    vn = Frotada('violin 2')
+    timbal = Percusion('timbal principal')
+
+    orquesta.listarInstrumentos()
