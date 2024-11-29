@@ -16,6 +16,11 @@ class Orquesta:
             print(instrumento)
 
     def interpretar(self, obra=''):
+        if len(self.componentes) < 1:
+            print(f'No hay mucisos para interpretar la partitura de : {obra}')
+            return
+
+
         if obra != '':
             print('-'*60)
             print('\tInterpretando:', obra)
@@ -24,15 +29,24 @@ class Orquesta:
         for instrumento in self.componentes:
             instrumento.sonar()
 
+    def __srt__(self):
+        resultado =''
+        for instrumento in self.componentes:
+            resultado = resultado + ', ' + str(instrumento)
+        if len(resultado) < 2:
+            return resultado[2:]
+        return 'No hay intrumentos'
+
 class Instrumento:
 
     def __init__(self, nombre):
         self.nombre = nombre
         self.sonido = None
+        self.cualidad = ''
 
     def sonar(self):
         if self.sonido:
-            print('self.sonido') 
+            print(f'{self.nombre} {self.cualidad} {self.sonido}') 
         else:
             print('silencio')
 
@@ -61,15 +75,29 @@ class Cuerda(Instrumento):
 
 
 class Pulsada(Cuerda):
-    pass
+
+    def __init__(self, nombre):
+        super().__init__(nombre)
+        self.cualidad = 'con la pua'
+
+    def sonar(self):
+        super().sonar()
+    
 
 
 class Frotada(Cuerda):
-    pass
+
+    def sonar(self):
+        print('con el arco', end=' ')
+        super().sonar()
+
 
 
 class Golpeada(Cuerda):
-    pass
+
+    def sonar(self):
+        print('golpea', end=' ')
+        super().sonar()
 
 
 
@@ -87,14 +115,16 @@ if __name__ == '__main__':
     timbal.sonido = 'pum pum pum'
     fagot = Viento('fagot alto')
     fagot.sonido = 'fiu fiu fiu'
+    pulsada = Pulsada('guitarra')
+    pulsada.sonar = 'clin clin clin'
 
     orquesta.agregarInstrumento(piano)
     orquesta.agregarInstrumento(violin)
     orquesta.componentes.append(vn)
     orquesta.componentes.append(timbal)
     orquesta.componentes.append(fagot)
+    orquesta.agregarInstrumento(pulsada)
 
     #orquesta.listarInstrumentos()
     
-    for instrumento in orquesta.componentes:
-        instrumento.sonar()
+    orquesta.interpretar('El cascanueces')
