@@ -116,7 +116,7 @@ if __name__ == '__main__':
     fagot = Viento('fagot alto')
     fagot.sonido = 'fiu fiu fiu'
     pulsada = Pulsada('guitarra')
-    pulsada.sonar = 'clin clin clin'
+    pulsada.sonido = 'clin clin clin'
 
     orquesta.agregarInstrumento(piano)
     orquesta.agregarInstrumento(violin)
