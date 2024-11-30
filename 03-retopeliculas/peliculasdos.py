@@ -34,8 +34,24 @@ class Cine:
                 cartelera[pase.pelicula.titulo] = []
             cartelera[pase.pelicula.titulo].append(pase.hora)
         return cartelera
-    
-       
+
+class Pelicula(Show):
+    def __init__(self, titulo):
+        super().__init__(titulo)
+        self.tipo = 'film'
+        self.pases = []
+
+    def agregar_pase(self, pase):
+        self.pases.append(pase)
+
+    def donde_la_veo(self):
+        cines = {}
+        for pase in self.pases:
+            if pase.cine.nombre not in cines:
+                cines[pase.cine.nombre] = []
+            cines[pase.cine.nombre].append(pase.hora)
+        return cines
+
 
 mis_pelis = [
 
