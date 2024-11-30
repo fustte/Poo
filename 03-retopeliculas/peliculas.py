@@ -21,12 +21,12 @@ mis_pelis = [
         show('Star Wars', 'film'),
         show('Avatar 2', 'film'),
         show('Wormwood', 'doc'),
-        show('the wire', 'serie')
+        show('The Wire', 'serie')
     
     ]
 
 for show in mis_pelis:
-    if show.titulo == "The wire":
+    if show.titulo == "The Wire":
         show.marcar_terminada()
 
 for show in mis_pelis:
