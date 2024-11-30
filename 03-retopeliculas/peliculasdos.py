@@ -21,9 +21,21 @@ class Cine:
         self.direccion = direccion
         self.pases = []
 
+    def __str__(self):
+        return f"{self.nombre} ({self.direccion})"
+
+    def agregar_pase(self, pase):
+        self.pases.append(pase)
+
+    def ver_cartelera(self):
+        cartelera = {}
+        for pase in self.pases:
+            if pase.pelicula.titulo not in cartelera:
+                cartelera[pase.pelicula.titulo] = []
+            cartelera[pase.pelicula.titulo].append(pase.hora)
+        return cartelera
     
-
-
+       
 
 mis_pelis = [
 
