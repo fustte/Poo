@@ -15,6 +15,16 @@ class show:
         vista = "Si" if self.terminada else "No"
         return f"Títutlo: {self.titulo}\tTipo: {self.tipo}\tVisto: {vista}\tFecha de Entrada: {self.fecha_entrada}"
     
+class Cine:
+    def __init__(self, nombre, direccion):
+        self.nombre = nombre
+        self.direccion = direccion
+        self.pases = []
+
+    
+
+
+
 mis_pelis = [
 
         show('Star Wars', 'film'),
