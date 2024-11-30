@@ -1,9 +1,8 @@
 from datetime import date
 
-class show:
-    def __init__(self, titulo, tipo):
+class Show:
+    def __init__(self, titulo):
         self.titulo = titulo
-        self.tipo = tipo
         self.terminada = False
         self.fecha_entrada = date.today()
 
@@ -35,10 +34,9 @@ class Cine:
             cartelera[pase.pelicula.titulo].append(pase.hora)
         return cartelera
 
-class Pelicula(show):
+class Pelicula(Show):
     def __init__(self, titulo):
         super().__init__(titulo)
-        self.tipo = 'film'
         self.pases = []
 
     def agregar_pase(self, pase):
