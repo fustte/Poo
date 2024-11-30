@@ -1,8 +1,8 @@
 
 from datetime import date
 
-class Show:
-    def __init__(self, titulo. tipo):
+class show:
+    def __init__(self, titulo, tipo):
         self.titulo = titulo
         self.tipo = tipo
         self.terminada = False
@@ -11,16 +11,16 @@ class Show:
     def marcar_terminada(self):
         self.terminada = True
 
-    def marcar_terminada(self):
-        self.terminada = True
-    def __str__(self):
-        return f"Títutlo: {self.titulo}\tTipo: {self.tipo}\tTerminada: {self.terminada}\tFecha de Entrada: {self.fecha_entrada}"
     
-    mis_pelis = [
+    def __str__(self):
+        vista = "Si" if self.terminada else "No"
+        return f"Títutlo: {self.titulo}\tTipo: {self.tipo}\tVisto: {vista}\tFecha de Entrada: {self.fecha_entrada}"
+    
+mis_pelis = [
 
-        show('Star Wars', 'film')
-        show('Avatar 2', 'film')
-        show('Wormwood', 'doc')
+        show('Star Wars', 'film'),
+        show('Avatar 2', 'film'),
+        show('Wormwood', 'doc'),
         show('the wire', 'serie')
     
     ]
@@ -28,6 +28,9 @@ class Show:
 for show in mis_pelis:
     if show.titulo == "The wire":
         show.marcar_terminada()
+
+for show in mis_pelis:
+    print(show)
 
 
 
