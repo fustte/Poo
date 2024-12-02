@@ -23,7 +23,15 @@ def max_valor_arbol(arbol):
 
     while pila:
         nodo = pila.pop()
-        valor, izquierdo, derecho = nodo
+        
+        if not nodo:
+            continue
+
+        valor = nodo[0]
+        izquierdo = nodo[1] if len(nodo) > 1 else []
+        derecho = nodo[2] if len(nodo) > 2 else []
+
+        
 
         if valor > max_valor:
             max_valor = valor
