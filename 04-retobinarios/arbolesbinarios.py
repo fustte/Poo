@@ -37,3 +37,8 @@ def max_valor_arbol(arbol):
     return max_valor
 
 
+# Llamo a la funcion
+
+mayor_valor = max_valor_arbol(arbol_binario)
+print("El mayor valor en el árbol binario es:", mayor_valor)
+
