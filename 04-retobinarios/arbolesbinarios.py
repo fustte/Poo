@@ -13,3 +13,27 @@ arbol_binario = [
         [5, [], []],
         []]]
 ]
+
+def max_valor_arbol(arbol):
+    if not arbol:
+        return float('-inf')
+    
+    pila = [arbol]
+    max_valor = float('inf')
+
+    while pila:
+        nodo = pila.pop()
+        valor, izquierdo, derecho = nodo
+
+        if valor > max_valor:
+            max_valor = valor
+
+        if derecho:
+            pila.append(derecho)
+
+        if izquierdo:
+            pila.append(izquierdo)
+
+    return max_valor
+
+
