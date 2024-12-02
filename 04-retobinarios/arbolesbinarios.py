@@ -19,7 +19,7 @@ def max_valor_arbol(arbol):
         return float('-inf')
     
     pila = [arbol]
-    max_valor = float('inf')
+    max_valor = float('-inf')
 
     while pila:
         nodo = pila.pop()
@@ -31,7 +31,7 @@ def max_valor_arbol(arbol):
         izquierdo = nodo[1] if len(nodo) > 1 else []
         derecho = nodo[2] if len(nodo) > 2 else []
 
-        
+
 
         if valor > max_valor:
             max_valor = valor
