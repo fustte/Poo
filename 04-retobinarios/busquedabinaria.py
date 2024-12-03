@@ -111,7 +111,13 @@ class Arbol:
             return 0
         return 1 + self._contar_nodos_recursivo(nodo.izquierdo) + self._contar_nodos_recursivo(nodo.derecho)
     
-    
+    def mostar_arbol(self):
+        return self._mostrar_arbol_recursivo(self.raiz)
 
+
+    def _mostrar_arbol_recursivo(self, nodo):
+        if nodo is None:
+            return[]
+        return self._mostrar_arbol_recursivo(nodo.izquierdo) + [nodo.valor] + self._mostrar_arbol_recursivo(nodo.derecho)
     
 
