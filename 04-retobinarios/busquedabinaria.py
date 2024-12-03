@@ -2,9 +2,9 @@
 
 class Nodo:
     def __init__(self, valor):
-    self.valor = valor
-    self.izquierdo = None
-    self.derecho = None
+        self.valor = valor
+        self.izquierdo = None
+        self.derecho = None
 
     def __repr__(self):
         return str(self.valor)
@@ -20,7 +20,7 @@ class Arbol:
         else:
             self._insertar_recursivo(self.raiz, valor)
 
-    def _insertar_recursivo(self, nodo valor):
+    def _insertar_recursivo(self, nodo, valor):
         if valor < nodo.valor:
             if nodo.izquierdo is None:
                 nodo.izquierdo = Nodo(valor)
@@ -28,8 +28,7 @@ class Arbol:
             else:
                 self._insertar_recursivo(nodo.izquierdo, valor)
     
-    def _insertar_recursivo(self, nodo valor):
-        if valor < nodo.valor:
+        elif valor < nodo.valor:
             if nodo.derecho is None:
                 nodo.derecho = Nodo(valor)
 
@@ -62,7 +61,7 @@ class Arbol:
         if valor < nodo.valor:
             nodo.izquierdo = self._eliminar_recursivo(nodo.izquierdo, valor)
         elif valor < nodo.valor:
-            nodo.derecho = self._ekiminar_recursivo(nodo.derecho, valor)
+            nodo.derecho = self._eliminar_recursivo(nodo.derecho, valor)
 
         else:
             if nodo.izquierdo is None:
@@ -88,12 +87,12 @@ class Arbol:
         return self._obtener_maximo_recursivo(nodo.derecho)
     
     def obtener_minimo(self):
-        return self._obtener_maximo_recursivo(self.raiz)
+        return self._obtener_minimo_recursivo(self.raiz)
     
     def _obtener_minimo_recursivo(self, nodo):
         if nodo.izquierdo is None:
             return nodo.valor
-        return self._sumar_valores_recursivo(self.raiz)
+        return self._obtener_minimo_recursivo(nodo.izquierdo)
     
     def sumar_valores(self):
         return self._sumar_valores_recursivo(self.raiz)
@@ -101,7 +100,7 @@ class Arbol:
     def _sumar_valores_recursivo(self, nodo):
         if nodo is None:
             return 0
-        return nodo.valor + self ._sumar_valores_recursivo(nodo.izquierdo) + self._sumar_valores_recursivo
+        return nodo.valor + self._sumar_valores_recursivo(nodo.izquierdo) + self._sumar_valores_recursivo(nodo.derecho)
     
     def contar_nodos(self):
         return self._contar_nodos_recursivo(self.raiz)
@@ -111,13 +110,28 @@ class Arbol:
             return 0
         return 1 + self._contar_nodos_recursivo(nodo.izquierdo) + self._contar_nodos_recursivo(nodo.derecho)
     
-    def mostar_arbol(self):
+    def mostrar_arbol(self):
         return self._mostrar_arbol_recursivo(self.raiz)
 
 
     def _mostrar_arbol_recursivo(self, nodo):
         if nodo is None:
-            return[]
+            return []
         return self._mostrar_arbol_recursivo(nodo.izquierdo) + [nodo.valor] + self._mostrar_arbol_recursivo(nodo.derecho)
     
 
+valores = [66, 34, 79, 26, 83, 39, 32, 60, 22, 74, 37, 80, 82, 50, 73, 31, 44, 33, 51]
+arbol = Arbol()
+for valor in valores:
+    arbol.insertar(valor)
+
+print("Árbol en orden:", arbol.mostrar_arbol())
+print("Buscar 60:", arbol.buscar(60))
+print("Coste de la última búsqueda:", arbol.coste_ultima_busqueda)
+print("Valor máximo:", arbol.obtener_maximo())
+print("Valor mínimo:", arbol.obtener_minimo())
+print("Suma de todos los valores:", arbol.sumar_valores())
+print("Cantidad de nodos:", arbol.contar_nodos())
+
+arbol.eliminar(60)
+print("Árbol después de eliminar 60:", arbol.mostrar_arbol())
