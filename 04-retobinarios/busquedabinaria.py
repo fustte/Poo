@@ -36,4 +36,20 @@ class Arbol:
             else:
                 self._insertar_recursivo(nodo.derecho, valor)
 
+    def buscar(self, valor):
+        self.coste_ultima_busqueda = 0
+        return self._buscar_recursivo(self.raiz, valor)
     
+    def _buscar_recursivo(self, nodo, valor):
+        if nodo is None:
+            return None
+        self.coste_ultima_busqueda += 1
+
+        if nodo.valor == valor:
+            return nodo
+        elif valor < nodo.valor:
+            return self._buscar_recursivo(nodo.izquierdo, valor)
+        else:
+            return self._buscar_recursivo(nodo.derecho, valor)
+        
+        
