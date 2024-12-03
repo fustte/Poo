@@ -2,7 +2,7 @@
 
 class Nodo:
     def __init__(self, valor):
-    self.valor = Value
+    self.valor = valor
     self.izquierdo = None
     self.derecho = None
 
@@ -74,4 +74,44 @@ class Arbol:
 
         return nodo
     
+    def _minimo_valor(self, nodo):
+        while nodo.izquierdo is not None:
+            nodo = nodo.izquierdo
+        return nodo.valor
     
+    def obtener_maximo(self):
+        return self._obtener_maximo_recursivo(self.raiz)
+    
+    def _obtener_maximo_recursivo(self, nodo):
+        if nodo.derecho is None:
+            return nodo.valor
+        return self._obtener_maximo_recursivo(nodo.derecho)
+    
+    def obtener_minimo(self):
+        return self._obtener_maximo_recursivo(self.raiz)
+    
+    def _obtener_minimo_recursivo(self, nodo):
+        if nodo.izquierdo is None:
+            return nodo.valor
+        return self._sumar_valores_recursivo(self.raiz)
+    
+    def sumar_valores(self):
+        return self._sumar_valores_recursivo(self.raiz)
+    
+    def _sumar_valores_recursivo(self, nodo):
+        if nodo is None:
+            return 0
+        return nodo.valor + self ._sumar_valores_recursivo(nodo.izquierdo) + self._sumar_valores_recursivo
+    
+    def contar_nodos(self):
+        return self._contar_nodos_recursivo(self.raiz)
+    
+    def _contar_nodos_recursivo(self, nodo):
+        if nodo is None:
+            return 0
+        return 1 + self._contar_nodos_recursivo(nodo.izquierdo) + self._contar_nodos_recursivo(nodo.derecho)
+    
+    
+
+    
+
