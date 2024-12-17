@@ -16,3 +16,44 @@ Puedes utilizar la abreviatura \n para insertar un salto de línea dentro de una
 Utiliza la función isinstance para hacer la comprobación del tipo de parámetro: https://docs.python.org/es/3/library/functi
 
 """
+
+class Cancion:
+    def __init__(self, titulo, duracion):
+        self.titulo = titulo
+        self.duracion = duracion
+
+    def __str__(self):
+        return f"{self.titulo} ({self.duracion})"
+
+class Album:
+    def __init__(self, titulo, fecha, interprete):
+        self.titulo = titulo
+        self.fecha = fecha
+        self.interprete = interprete
+        self.canciones = []
+
+    def agregar_cancion(self, cancion):
+        if isinstance(cancion, Cancion):
+            self.canciones.append(cancion)
+        else:
+            print("Error: El parámetro debe ser un objeto de tipo Cancion.")
+
+    def __str__(self):
+        canciones_str = "\n".join(str(cancion) for cancion in self.canciones)
+        return f"""
+Álbum: {self.titulo}
+Artista: {self.interprete}
+Año: {self.fecha}
+Canciones:
+{canciones_str}
+"""
+
+# Ejemplo de uso:
+cancion1 = Cancion("Born in the U.S.A.", "5:10")
+cancion2 = Cancion("Dancing in the Dark", "4:05")
+
+album = Album("Born in the U.S.A.", 1984, "Bruce Springsteen")
+album.agregar_cancion(cancion1)
+album.agregar_cancion(cancion2)
+
+print(album)
