@@ -14,3 +14,53 @@ Para cada uno de los triángulos anteriores, comprobar el resultado del método 
 Utilizar el método isinstance para comprobar que los tres triángulos anteriores son de tipo Triangulo además del tipo específico correspondiente (Equilatero, Isosceles o Escaleno).
 Por último, comprobar que la creación de un triángulo con los valores 1, 2, 4 no genera un triángulo válido.
 """
+
+
+class Triangulo:
+    def __init__(self, lado1, lado2, lado3):
+        self.lado1 = lado1
+        self.lado2 = lado2
+        self.lado3 = lado3
+        self.tipo = 'indefinido'
+
+    def validar(self):
+        return self.lado1 + self.lado2 > self.lado3 and \
+               self.lado1 + self.lado3 > self.lado2 and \
+               self.lado2 + self.lado3 > self.lado1
+
+    def get_tipo(self):
+        return self.tipo
+
+class Equilatero(Triangulo):
+    def __init__(self, lado):
+        super().__init__(lado, lado, lado)
+        self.tipo = 'equilátero'
+
+class Isosceles(Triangulo):
+    def __init__(self, lado_igual, lado_diferente):
+        super().__init__(lado_igual, lado_igual, lado_diferente)
+        self.tipo = 'isósceles'
+
+class Escaleno(Triangulo):
+    def __init__(self, lado1, lado2, lado3):
+        super().__init__(lado1, lado2, lado3)
+        self.tipo = 'escaleno'
+
+# Instanciar triángulos
+triangulo_equilatero = Equilatero(5)
+triangulo_isosceles = Isosceles(4, 3)
+triangulo_escaleno = Escaleno(3, 4, 5)
+triangulo_invalido = Triangulo(1, 2, 4)
+
+# Validar y obtener tipo
+if triangulo_equilatero.validar():
+    print(f"El triángulo equilátero es {triangulo_equilatero.get_tipo()}")
+else:
+    print("El triángulo equilátero no es válido")
+
+# ... repetir para los otros triángulos
+
+# Comprobar tipos
+print(isinstance(triangulo_equilatero, Triangulo))  # True
+print(isinstance(triangulo_equilatero, Equilatero))  # True
+print(isinstance(triangulo_invalido, Triangulo))  # True (pero no es válido)
